@@ -6,7 +6,7 @@ import Firestore from '../handlers/firestore'
 import Storage from '../handlers/storage'
 
 const { writeDoc } = Firestore
-const { uploadFile } = Storage
+const { uploadFile, downloadFile } = Storage
 
 const UploadForm = () => {
   const { state, dispatch } = useContext(Context)
@@ -15,12 +15,14 @@ const UploadForm = () => {
   const onChange = e => dispatch({ type: 'setInputs', payload: { value: e } })
   const onSubmit = e => {
     e.preventDefault()
-    uploadFile(inputs).then(media => {
-      debugger
-      writeDoc(inputs, 'stocks').then(console.log)
-      dispatch({ type: 'setItem' })
-      dispatch({ type: 'collapse', payload: { bool: false } })
-    })
+    uploadFile(inputs)
+      .then(downloadFile)
+      .then(url => {
+        writeDoc({ ...inputs, path: url }, 'stocks').then(() => {
+          dispatch({ type: 'setItem' })
+          dispatch({ type: 'collapse', payload: { bool: false } })
+        })
+      })
   }
 
   const isDisabled = useMemo(() => {
