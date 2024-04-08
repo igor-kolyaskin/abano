@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import Preview from './preview'
 import { useContext } from 'react'
-import { Context } from '../context'
+import { Context } from '../context/FirestoreContext'
 import Firestore from '../handlers/firestore'
 import Storage from '../handlers/storage'
 
