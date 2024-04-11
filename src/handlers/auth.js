@@ -23,5 +23,10 @@ const FirebaseAuth = {
         .catch(console.error)
     })
   },
+  getCurrenUser: () => {
+    return new Promise(resolve => {
+      return auth.onAuthStateChanged(resolve)
+    })
+  },
 }
 export default FirebaseAuth

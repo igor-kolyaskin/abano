@@ -3,16 +3,18 @@ import { Context } from '../context/FirestoreContext'
 
 const Preview = () => {
   const { state } = useContext(Context)
-  const { inputs } = state
+  const {
+    inputs: { path },
+  } = state
 
   return (
-    inputs.path && (
+    path && (
       <div
         className='rounded p-1 m-5'
         style={{
           width: '30%',
           height: '300px',
-          backgroundImage: `url(${inputs.path}`,
+          backgroundImage: `url(${path}`,
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
         }}

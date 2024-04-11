@@ -2,15 +2,18 @@ import { useMemo } from 'react'
 import Preview from './preview'
 import { useContext } from 'react'
 import { Context } from '../context/FirestoreContext'
+import { useAuthContext } from '../context/AuthContext'
 import Firestore from '../handlers/firestore'
 import Storage from '../handlers/storage'
 
-const { writeDoc } = Firestore
+const { writeDoc} = Firestore
 const { uploadFile, downloadFile } = Storage
 
 const UploadForm = () => {
-  const { state, dispatch } = useContext(Context)
+  const { state, dispatch, read } = useContext(Context)
   const { inputs, isCollapsed } = state
+  const { currentUser } = useAuthContext()
+  const username = currentUser?.displayName.split(' ').join('')
 
   const onChange = e => dispatch({ type: 'setInputs', payload: { value: e } })
   const onSubmit = e => {
@@ -18,8 +21,12 @@ const UploadForm = () => {
     uploadFile(inputs)
       .then(downloadFile)
       .then(url => {
-        writeDoc({ ...inputs, path: url }, 'stocks').then(() => {
-          dispatch({ type: 'setItem' })
+        writeDoc(
+          { ...inputs, path: url, user: username.toLowerCase() },
+          'stocks'
+        ).then(() => {
+          read()
+          // dispatch({ type: 'setItem' })
           dispatch({ type: 'collapse', payload: { bool: false } })
         })
       })
