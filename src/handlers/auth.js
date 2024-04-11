@@ -1,7 +1,7 @@
 import { signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth'
 import { auth } from '../lib/firebase.config'
 
-const provider = GoogleAuthProvider()
+const provider = new GoogleAuthProvider()
 
 const FirebaseAuth = {
   signIn: () => {
