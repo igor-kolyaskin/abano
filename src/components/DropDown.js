@@ -1,4 +1,5 @@
 import { useAuthContext } from '../context/AuthContext'
+import { useMemo } from 'react'
 
 const LogIn = () => {
   const { login, currentUser } = useAuthContext()
@@ -22,6 +23,11 @@ const LogOut = () => {
   )
 }
 function Dropdown() {
+  const { currentUser } = useAuthContext()
+  const userName = useMemo(() => {
+    return currentUser?.displayName || 'Profile'
+  }, [currentUser])
+
   return (
     <ul className='navbar-nav mb-2 mb-lg-0'>
       {' '}
