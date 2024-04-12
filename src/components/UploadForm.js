@@ -23,7 +23,7 @@ const UploadForm = () => {
       .then(url => {
         writeDoc(
           { ...inputs, path: url, user: username.toLowerCase() },
-          'StockImages'
+          'stocks'
         ).then(() => {
           read()
           // dispatch({ type: 'setItem' })

@@ -5,9 +5,21 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import Provider from './context/FirestoreContext'
-import AuthProvider from './context/AuthContext'
+import AuthProvider, { useAuthContext } from './context/AuthContext'
 import Layout from './components/Layout'
 import StockImages from './components/StockImages'
+import Single from './components/Single'
+
+function AppRoutes() {
+  const { currentUser } = useAuthContext()
+  return (
+    <Routes>
+      <Route path='/' element={<App />} />
+      <Route path='/images/:id' element={<Single />} />
+      {currentUser && <Route path='/stockimages' element={<StockImages />} />}
+    </Routes>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -16,10 +28,7 @@ root.render(
       <Provider>
         <Router>
           <Layout>
-            <Routes>
-              <Route path='/' element={<App />} />
-              <Route path='/stockimages' element={<StockImages />} />
-            </Routes>
+            <AppRoutes />
           </Layout>
         </Router>
       </Provider>

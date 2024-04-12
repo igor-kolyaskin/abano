@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer, useContext } from 'react'
 import Firestore from '../handlers/firestore'
 
 const { readDocs } = Firestore
@@ -54,7 +54,7 @@ function reducer(state, action) {
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const read = async () => {
-    const items = await readDocs('StockImages')
+    const items = await readDocs('stocks')
     dispatch({ type: 'setItems', payload: { items } })
   }
   return (
@@ -63,4 +63,8 @@ const Provider = ({ children }) => {
     </Context.Provider>
   )
 }
+export const useFireStoreContext = () => {
+  return useContext(Context)
+}
+
 export default Provider

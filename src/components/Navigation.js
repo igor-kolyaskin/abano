@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '../context/AuthContext'
 
 function Navigation() {
+  const { currentUser } = useAuthContext()
   return (
     <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
       <li className='nav-item'>
@@ -8,10 +10,17 @@ function Navigation() {
           Home
         </Link>
       </li>
+
       <li className='nav-item'>
-        <Link className='nav-link active' aria-current='page' to='/stockimages'>
-          My Images
-        </Link>
+        {currentUser && (
+          <Link
+            className='nav-link active'
+            aria-current='page'
+            to='/stockimages'
+          >
+            My Images
+          </Link>
+        )}
       </li>
     </ul>
   )
