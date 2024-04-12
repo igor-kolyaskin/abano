@@ -7,6 +7,10 @@ import reportWebVitals from './reportWebVitals'
 import Provider from './context/FirestoreContext'
 import AuthProvider from './context/AuthContext'
 
+function Stocks() {
+  return <h1>My Images</h1>
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
@@ -15,6 +19,7 @@ root.render(
         <Router>
           <Routes>
             <Route path='/' element={<App />} />
+            <Route path='/stocks' element={<Stocks />} />
           </Routes>
         </Router>
       </Provider>
