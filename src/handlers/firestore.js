@@ -31,7 +31,7 @@ const Firestore = {
     return new Promise(async resolve => {
       const randomIndex = Math.floor(Math.random() * 1000000000)
       try {
-        const docRef = doc(db, 'stocks', `${randomIndex}`)
+        const docRef = doc(db, 'StockImages', `${randomIndex}`)
         await setDoc(docRef, {
           title: inputs.title,
           path: inputs.path,

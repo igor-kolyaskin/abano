@@ -54,7 +54,7 @@ function reducer(state, action) {
 const Provider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const read = async () => {
-    const items = await readDocs('stocks')
+    const items = await readDocs('StockImages')
     dispatch({ type: 'setItems', payload: { items } })
   }
   return (

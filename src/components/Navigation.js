@@ -9,7 +9,7 @@ function Navigation() {
         </Link>
       </li>
       <li className='nav-item'>
-        <Link className='nav-link active' aria-current='page' to='/stocks'>
+        <Link className='nav-link active' aria-current='page' to='/stockimages'>
           My Images
         </Link>
       </li>

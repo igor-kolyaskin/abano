@@ -23,7 +23,7 @@ const UploadForm = () => {
       .then(url => {
         writeDoc(
           { ...inputs, path: url, user: username.toLowerCase() },
-          'stocks'
+          'StockImages'
         ).then(() => {
           read()
           // dispatch({ type: 'setItem' })
@@ -38,7 +38,7 @@ const UploadForm = () => {
   return (
     isCollapsed && (
       <>
-        <p className='display-6 text-center mb-3'>Upload Stock Image</p>
+        <p className='display-6 text-center mb-3'>Upload StockImages Image</p>
         <div className='mb-5 d-flex align-items-center justify-content-center'>
           <Preview />
           <form
