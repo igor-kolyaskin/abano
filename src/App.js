@@ -1,8 +1,6 @@
 import { useMemo, useContext, useEffect } from 'react'
 import './App.css'
-import Card from './components/Card'
 import { Context } from './context/FirestoreContext'
-import Firestore from './handlers/firestore'
 import { useAuthContext } from './context/AuthContext'
 import List from './components/List'
 
@@ -25,11 +23,6 @@ function App() {
     <>
       <h1 className='text-center'>Abano 5</h1>
       {count}
-      {/* <div className='row'>
-        {state.items.map((item, index) => (
-          <Card key={index} {...item} />
-        ))}
-      </div> */}
       <List items={state.items} />
     </>
   )
