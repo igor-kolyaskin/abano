@@ -58,13 +58,9 @@ function Dropdown() {
           {avatar}
         </a>
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
-          <li>
-            <a className='dropdown-item text-center' href='#'>
-              {currentUser && <Link to={'/profile'}>{username}</Link>}
-            </a>
-            <li>
-              <hr className='dropdown divider' />
-            </li>
+          <li className='dropdown-item text-center'>
+            {currentUser && <Link to={'/profile'}>{username}</Link>}
+            <hr className='dropdown divider' />
           </li>
           <div className='d-flex justify-content-center'>
             <LogIn />
