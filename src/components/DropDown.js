@@ -1,5 +1,6 @@
 import { useAuthContext } from '../context/AuthContext'
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 
 const LogIn = () => {
   const { login, currentUser } = useAuthContext()
@@ -59,7 +60,7 @@ function Dropdown() {
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
           <li>
             <a className='dropdown-item text-center' href='#'>
-              {username}
+              {currentUser && <Link to={'/profile'}>{username}</Link>}
             </a>
             <li>
               <hr className='dropdown divider' />

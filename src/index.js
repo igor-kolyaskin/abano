@@ -8,6 +8,8 @@ import Provider from './context/FirestoreContext'
 import AuthProvider, { useAuthContext } from './context/AuthContext'
 import Layout from './components/Layout'
 import StockImages from './components/StockImages'
+import NotFound from './components/NotFound'
+import Profile from './components/Profile'
 import Single from './components/Single'
 
 function AppRoutes() {
@@ -16,6 +18,8 @@ function AppRoutes() {
     <Routes>
       <Route path='/' element={<App />} />
       <Route path='/images/:id' element={<Single />} />
+      <Route path='*' element={<NotFound />} />
+      <Route path='/profile' element={<Profile />} />
       {currentUser && <Route path='/stockimages' element={<StockImages />} />}
     </Routes>
   )

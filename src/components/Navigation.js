@@ -1,27 +1,46 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
 
 function Navigation() {
+  const { pathname } = useLocation()
   const { currentUser } = useAuthContext()
   return (
     <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
       <li className='nav-item'>
-        <Link className='nav-link active' aria-current='page' to='/'>
+        <Link
+          className={`nav-link ${pathname === '/' ? 'active' : ''}`}
+          aria-current='page'
+          to='/'
+        >
           Home
         </Link>
       </li>
 
-      <li className='nav-item'>
-        {currentUser && (
+      {currentUser && (
+        <li className='nav-item'>
           <Link
-            className='nav-link active'
+            className={`nav-link ${
+              pathname === '/stockimages' ? 'active' : ''
+            }`}
             aria-current='page'
             to='/stockimages'
           >
             My Images
           </Link>
-        )}
-      </li>
+        </li>
+      )}
+
+      {currentUser && (
+        <li className='nav-item'>
+          <Link
+            className={`nav-link ${pathname === '/profile' ? 'active' : ''}`}
+            aria-current='page'
+            to='/profile'
+          >
+            Profile
+          </Link>
+        </li>
+      )}
     </ul>
   )
 }
