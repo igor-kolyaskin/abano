@@ -25,7 +25,7 @@ function Card({ path, title, createdAt, user, id }) {
         <h5 className='text-center mt-1'>{title}</h5>
         <div className='d-flex justify-content-between p-2'>
           <p>{timestamp}</p>
-          <i>[`@{user}`]</i>
+          <i>@{user}</i>
         </div>
       </div>
     </div>
