@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext } from 'react'
+import { createContext, useReducer, useContext, useMemo } from 'react'
 import Firestore from '../handlers/firestore'
 
 const { readDocs } = Firestore
@@ -8,6 +8,7 @@ export const Context = createContext()
 const photos = []
 const initialState = {
   items: photos,
+  placeholders: photos,
   count: photos.length,
   inputs: { title: null, file: null, path: null },
   isCollapsed: false,
@@ -34,13 +35,20 @@ function reducer(state, action) {
       return {
         ...state,
         items: [state.inputs, ...state.items],
+        placeholders: [state.inputs, ...state.items],
         count: state.items.length + 1,
         inputs: { title: null, file: null, path: null },
+      }
+    case 'filterItems':
+      return {
+        ...state,
+        items: action.payload.results,
       }
     case 'setItems':
       return {
         ...state,
         items: action.payload.items,
+        placeholders: action.payload.items,
       }
     case 'setInputs':
       return { ...state, inputs: handleOnChange(state, action.payload.value) }
@@ -57,11 +65,24 @@ const Provider = ({ children }) => {
     const items = await readDocs('stocks')
     dispatch({ type: 'setItems', payload: { items } })
   }
-  return (
-    <Context.Provider value={{ state, dispatch, read }}>
-      {children}
-    </Context.Provider>
-  )
+  const filterItems = input => {
+    if (input === '' || !!input) {
+      dispatch({ type: 'setItems', payload: { items: state.placeholders } })
+    }
+    let list = state.placeholders.flat()
+    let results = list.filter(item => {
+      const name = item.title.toLowerCase()
+      const searchInput = input.toLowerCase()
+      return name.indexOf(searchInput) > -1
+    })
+    dispatch({ type: 'filterItems', payload: { results } })
+  }
+
+  const value = useMemo(() => {
+    return { state, dispatch, read, filterItems }
+  }, [state, dispatch, read, filterItems])
+
+  return <Context.Provider value={value}>{children}</Context.Provider>
 }
 export const useFireStoreContext = () => {
   return useContext(Context)

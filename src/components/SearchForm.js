@@ -1,10 +1,16 @@
 import { useState } from 'react'
+import { useFireStoreContext } from '../context/FirestoreContext'
 
 function SearchForm() {
-  const { text, search } = useState(null)
-  const handleOnChange = e => search(e.target.value)
+  const [text, search] = useState(null)
+  const { filterItems: filter } = useFireStoreContext()
+  const handleOnChange = e => {
+    search(e.target.value)
+    filter(e.target.value)
+  }
   const handelOnSubmit = e => {
     e.preventDefault()
+    filter(text)
   }
 
   return (
