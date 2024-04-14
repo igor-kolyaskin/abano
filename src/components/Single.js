@@ -18,7 +18,12 @@ const Single = () => {
           fill='currentColor'
           className='bi bi-chevron-left'
           viewBox='0 0 16 16'
-          style={{ height: '64x', width: '64px', cursor: 'pointer' }}
+          style={{
+            height: '48px',
+            width: '48px',
+            paddingTop: '8px',
+            cursor: 'pointer',
+          }}
           onClick={() => navigate(-1)}
         >
           <path
@@ -33,7 +38,7 @@ const Single = () => {
           Headline
         </div>
       </div>
-      <div className='d-flex justify-content-start mb-5 mt-1'>
+      <div className='d-flex justify-content-start mb-5 mt-2'>
         <Card {...item} />
       </div>
     </>
