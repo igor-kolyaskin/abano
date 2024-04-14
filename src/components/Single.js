@@ -1,12 +1,20 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useFireStoreContext } from '../context/FirestoreContext'
 import Card from './Card'
+import filterOnParentId from '../handlers/filterOnParentId'
+import List from './List'
 
 const Single = () => {
   const navigate = useNavigate()
-  const { state } = useFireStoreContext()
   const { state: routerState } = useLocation()
-  const item = state.items.find(item => item.id === routerState.id)
+
+  const { state } = useFireStoreContext()
+  // const { authenticate } = useAuthContext()
+  // const itemsOnHomePage = filterOnParentId(state.items, parentId)
+
+  const parentItem = state.items.find(item => item.id === routerState.id)
+  const successorItems = filterOnParentId(state.items, routerState.id)
+  const list = [parentItem, ...successorItems]
 
   return (
     <>
@@ -38,9 +46,10 @@ const Single = () => {
           Headline
         </div>
       </div>
-      <div className='d-flex justify-content-start mb-5 mt-2'>
-        <Card {...item} />
-      </div>
+      {/* <div className='d-flex justify-content-start mb-5 mt-2'>
+        <Card {...parentItem} />
+      </div> */}
+      <List items={list} />
     </>
   )
 }
