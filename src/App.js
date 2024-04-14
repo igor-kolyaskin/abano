@@ -1,4 +1,4 @@
-import { useMemo, useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import './App.css'
 import { Context } from './context/FirestoreContext'
 import { useAuthContext } from './context/AuthContext'
@@ -8,12 +8,6 @@ function App() {
   const { state, read } = useContext(Context)
   const { authenticate } = useAuthContext()
 
-  const count = useMemo(() => {
-    return `you have ${state.items.length} image${
-      state.items.length > 1 ? 's' : ''
-    }`
-  }, [state.items])
-
   useEffect(() => {
     read()
     authenticate()
@@ -21,8 +15,7 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center'>Abano 5</h1>
-      {count}
+      <h1 className='text-center'>Worth to Visit</h1>
       <List items={state.items} />
     </>
   )

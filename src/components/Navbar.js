@@ -6,9 +6,7 @@ function Navbar() {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light mb-5'>
       <div className='container-fluid'>
-        <a className='navbar-brand' href='#'>
-          Abano-5
-        </a>
+        <div className='navbar-brand'>Tbilisi</div>
         <button
           className='navbar-toggler'
           type='button'
