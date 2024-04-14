@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center'>Worth to Visit</h1>
+      <h1 className='text-start'>Worth to Visit</h1>
       <List items={state.items} />
     </>
   )

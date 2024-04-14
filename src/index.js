@@ -11,6 +11,7 @@ import StockImages from './components/StockImages'
 import NotFound from './components/NotFound'
 import Profile from './components/Profile'
 import Single from './components/Single'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 function AppRoutes() {
   const { currentUser } = useAuthContext()

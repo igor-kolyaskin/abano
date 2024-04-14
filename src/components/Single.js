@@ -10,9 +10,19 @@ const Single = () => {
 
   return (
     <>
-      <button className='btn btn-link' onClick={() => navigate(-1)}>
-        Back
-      </button>
+      <div className='row'>
+        <i
+          className='bi bi-chevron-left pt-3'
+          style={{ width: '32px', cursor: 'pointer' }}
+          onClick={() => navigate(-1)}
+        ></i>
+        <div
+          className='text-start h1'
+          style={{ height: '32px', width: '160px' }}
+        >
+          Headline
+        </div>
+      </div>
       <div className='d-flex justify-content-center mb-5'>
         <Card {...item} />
       </div>
