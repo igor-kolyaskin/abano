@@ -6,7 +6,7 @@ import { useAuthContext } from '../context/AuthContext'
 import Firestore from '../handlers/firestore'
 import Storage from '../handlers/storage'
 
-const { writeDoc} = Firestore
+const { writeDoc } = Firestore
 const { uploadFile, downloadFile } = Storage
 
 const UploadForm = () => {
@@ -22,7 +22,12 @@ const UploadForm = () => {
       .then(downloadFile)
       .then(url => {
         writeDoc(
-          { ...inputs, path: url, user: username.toLowerCase() },
+          {
+            ...inputs,
+            path: url,
+            user: username.toLowerCase(),
+            parentId: null,
+          },
           'stocks'
         ).then(() => {
           read()

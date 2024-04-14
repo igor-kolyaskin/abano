@@ -36,7 +36,8 @@ const Firestore = {
           title: inputs.title,
           path: inputs.path,
           createdAt: serverTimestamp(),
-          user: inputs.user
+          user: inputs.user,
+          parentId: inputs.parentId,
         })
         resolve('new doc successfully inserted')
       } catch (error) {

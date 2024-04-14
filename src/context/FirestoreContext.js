@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useReducer, useContext, useMemo } from 'react'
 import Firestore from '../handlers/firestore'
 
