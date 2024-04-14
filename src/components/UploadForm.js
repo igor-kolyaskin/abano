@@ -5,6 +5,7 @@ import { Context } from '../context/FirestoreContext'
 import { useAuthContext } from '../context/AuthContext'
 import Firestore from '../handlers/firestore'
 import Storage from '../handlers/storage'
+import { useLocation } from 'react-router-dom'
 
 const { writeDoc } = Firestore
 const { uploadFile, downloadFile } = Storage
@@ -13,8 +14,10 @@ const UploadForm = () => {
   const { state, dispatch, read } = useContext(Context)
   const { inputs, isCollapsed } = state
   const { currentUser } = useAuthContext()
-  const username = currentUser?.displayName.split(' ').join('')
+  const { pathname } = useLocation()
 
+  const username = currentUser?.displayName.split(' ').join('')
+  const parentId = pathname === '/' ? null : pathname.split('/')[2]
   const onChange = e => dispatch({ type: 'setInputs', payload: { value: e } })
   const onSubmit = e => {
     e.preventDefault()
@@ -26,7 +29,7 @@ const UploadForm = () => {
             ...inputs,
             path: url,
             user: username.toLowerCase(),
-            parentId: null,
+            parentId,
           },
           'stocks'
         ).then(() => {
