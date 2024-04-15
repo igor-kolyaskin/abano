@@ -7,8 +7,8 @@ const List = ({ items }) => {
         return (
           <div
             key={index}
-            className=' mb-5'
-            style={{ width: '19rem', paddingLeft: 0, paddingRight: 0 }}
+            className=' mb-2'
+            style={{ width: '20rem', paddingLeft: 0, paddingRight: 0 }}
           >
             <Card {...item} />
           </div>

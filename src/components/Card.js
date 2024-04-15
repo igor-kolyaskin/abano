@@ -15,7 +15,7 @@ function Card({ path, title, description, createdAt, user, id }) {
 
   return (
     <div
-      className='mb-5'
+      className='mb-3'
       onClick={handleOnClick}
       style={{ cursor: cursorStyle }}
     >
