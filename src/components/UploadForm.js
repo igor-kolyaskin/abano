@@ -64,6 +64,29 @@ const UploadForm = () => {
                 onChange={onChange}
               />
             </div>
+
+            <div className='mb-3'>
+              <input
+                type='text'
+                className='form-control'
+                name='order'
+                placeholder='order'
+                aria-describedby='text'
+                onChange={onChange}
+              />
+            </div>
+
+            <div className='mb-3'>
+              <input
+                type='text'
+                className='form-control'
+                name='description'
+                placeholder='description'
+                aria-describedby='text'
+                onChange={onChange}
+              />
+            </div>
+
             <div className='mb-3'>
               <input
                 type='file'
@@ -72,6 +95,7 @@ const UploadForm = () => {
                 onChange={onChange}
               />
             </div>
+
             <button
               type='submit'
               className='btn btn-success float-end'
