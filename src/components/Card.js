@@ -1,13 +1,23 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-function Card({ path, title, createdAt, user, id }) {
+function Card({ path, title, description, createdAt, user, id }) {
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const isHomePage = pathname === '/'
+  const cursorStyle = isHomePage ? 'pointer' : 'default'
+  const cardText = isHomePage ? title : description
+
   const handleOnClick = () => {
+    if (!isHomePage) return
     navigate(`/images/${id}`, { state: { id } })
   }
 
   return (
-    <div className='mb-5' onClick={handleOnClick}>
+    <div
+      className='mb-5'
+      onClick={handleOnClick}
+      style={{ cursor: cursorStyle }}
+    >
       <div className='card' style={{ width: '18.1rem' }}>
         <div
           style={{
@@ -17,7 +27,7 @@ function Card({ path, title, createdAt, user, id }) {
             backgroundRepeat: 'no-repeat',
           }}
         ></div>
-        <h5 className='text-center mt-1'>{title}</h5>
+        <h5 className='text-center mt-1'>{cardText}</h5>
       </div>
     </div>
   )
