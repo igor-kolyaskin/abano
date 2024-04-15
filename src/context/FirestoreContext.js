@@ -16,17 +16,32 @@ const initialState = {
 }
 
 const handleOnChange = (state, e) => {
-  if (e.target.name === 'file') {
-    return {
-      ...state.inputs,
-      file: e.target.files[0],
-      path: URL.createObjectURL(e.target.files[0]),
-    }
-  } else {
-    return {
-      ...state.inputs,
-      title: e.target.value,
-    }
+  switch (e.target.name) {
+    case 'file':
+      return {
+        ...state.inputs,
+        file: e.target.files[0],
+        path: URL.createObjectURL(e.target.files[0]),
+      }
+    case 'title':
+      return {
+        ...state.inputs,
+        title: e.target.value,
+      }
+    case 'order':
+      return {
+        ...state.inputs,
+        order: e.target.value,
+      }
+    case 'description':
+      return {
+        ...state.inputs,
+        description: e.target.value,
+      }
+    default:
+      return {
+        ...state.inputs,
+      }
   }
 }
 
