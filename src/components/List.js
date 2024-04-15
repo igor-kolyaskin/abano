@@ -5,7 +5,7 @@ const List = ({ items }) => {
     <div className='row mt-3'>
       {items.map((item, index) => {
         return (
-          <div key={index} className='col-4 mb-5'>
+          <div key={index} className=' mb-5' style={{ width: '19rem' }}>
             <Card {...item} />
           </div>
         )

@@ -5,6 +5,7 @@ function Card({ path, title, description, createdAt, user, id }) {
   const { pathname } = useLocation()
   const isHomePage = pathname === '/'
   const cursorStyle = isHomePage ? 'pointer' : 'default'
+  const textStyle = isHomePage ? 'text-center' : 'text-start ps-1 fs-6'
   const cardText = isHomePage ? title : description
 
   const handleOnClick = () => {
@@ -27,7 +28,7 @@ function Card({ path, title, description, createdAt, user, id }) {
             backgroundRepeat: 'no-repeat',
           }}
         ></div>
-        <h5 className='text-center mt-1'>{cardText}</h5>
+        <h5 className={`${textStyle} mt-1`}>{cardText}</h5>
       </div>
     </div>
   )
