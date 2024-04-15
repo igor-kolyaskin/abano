@@ -41,9 +41,9 @@ const Single = () => {
         </svg>
         <div
           className='text-start h2 pt-2'
-          style={{ height: '48px', width: '160px' }}
+          style={{ height: '48px', width: '460px' }}
         >
-          Headline
+          {parentItem.title}
         </div>
       </div>
       <List items={list} />
