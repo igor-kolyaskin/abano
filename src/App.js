@@ -16,10 +16,12 @@ function App() {
   }, [])
 
   return (
-    <div className='row'>
-      <h1 className='text-start'>Worth to Visit</h1>
+    <>
+      <div className='row'>
+        <h1 className='text-start'>Worth to Visit</h1>
+      </div>{' '}
       <List items={itemsOnHomePage} />
-    </div>
+    </>
   )
 }
 
