@@ -8,7 +8,7 @@ function Card({ path, title, createdAt, user, id }) {
 
   return (
     <div className='mb-5' onClick={handleOnClick}>
-      <div className='card' style={{ width: '18rem' }}>
+      <div className='card' style={{ width: '18.1rem' }}>
         <div
           style={{
             height: '18rem',
