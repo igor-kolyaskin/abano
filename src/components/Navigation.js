@@ -19,20 +19,6 @@ function Navigation() {
       {currentUser && (
         <li className='nav-item'>
           <Link
-            className={`nav-link ${
-              pathname === '/stockimages' ? 'active' : ''
-            }`}
-            aria-current='page'
-            to='/stockimages'
-          >
-            My Images
-          </Link>
-        </li>
-      )}
-
-      {currentUser && (
-        <li className='nav-item'>
-          <Link
             className={`nav-link ${pathname === '/profile' ? 'active' : ''}`}
             aria-current='page'
             to='/profile'
