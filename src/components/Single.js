@@ -14,7 +14,7 @@ const Single = () => {
 
   const parentItem = state.items.find(item => item.id === routerState.id)
   const successorItems = filterOnParentId(state.items, routerState.id)
-  const list = [parentItem, ...successorItems]
+  const list = [parentItem, ...successorItems].sort((item1, item2) => item1.order - item2.order)
 
   return (
     <>
