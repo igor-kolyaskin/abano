@@ -30,6 +30,7 @@ const Single = () => {
             height: '48px',
             width: '48px',
             paddingTop: '8px',
+            paddingLeft: 0,
             cursor: 'pointer',
           }}
           onClick={() => navigate(-1)}
