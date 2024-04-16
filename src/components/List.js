@@ -1,12 +1,17 @@
 import Card from './Card'
 import CardGeo from './CardGeo'
+import parseGeoData from '../handlers/parseGeoData'
 
 const List = ({ items, pageType }) => {
-  const isHomePage = pageType === 'general'
+  const isSinglePage = pageType === 'single'
+  const cardItems = items.filter(item => item.order !== 'z')
+  const geoDataArray = items.filter(item => item.order === 'z')[0]?.path
+  const geoData = parseGeoData(geoDataArray)
+  console.log('geoData: ', geoData)
 
   return (
     <div className='row mt-3'>
-      {items.map((item, index) => {
+      {cardItems.map((item, index) => {
         return (
           <div
             key={index}
@@ -17,7 +22,7 @@ const List = ({ items, pageType }) => {
           </div>
         )
       })}
-      {!isHomePage && <CardGeo />}
+      {isSinglePage && <CardGeo />}
     </div>
   )
 }
