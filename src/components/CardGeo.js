@@ -1,5 +1,5 @@
-function CardGeo({lt, ln, zoom, geoId, geoTitle}) {
-  const cardText = 'geo'
+function CardGeo({ lt, ln, zoom, geoId, geoTitle, title, description }) {
+  const coordinates = lt && ln ? `${lt},${ln}` : '0,0'
 
   return (
     <div
@@ -8,17 +8,17 @@ function CardGeo({lt, ln, zoom, geoId, geoTitle}) {
     >
       <div className='card' style={{ width: '18.1rem' }}>
         <gmp-map
-          center='41.68861389160156,44.81126022338867'
-          zoom='14'
-          map-id='DEMO_MAP_ID'
+          center={coordinates}
+          zoom={zoom}
+          map-id={geoId}
           style={{ height: '18rem' }}
         >
           <gmp-advanced-marker
-            position='41.68861389160156,44.81126022338867'
-            title='My location'
+            position={coordinates}
+            title={geoTitle}
           ></gmp-advanced-marker>
         </gmp-map>
-        <h5 className='text-start ps-1 fs-6 mt-1'>{cardText}</h5>
+        <h5 className='text-start ps-1 fs-6 mt-1'>{title}</h5>
       </div>
     </div>
   )

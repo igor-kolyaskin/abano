@@ -6,7 +6,11 @@ const List = ({ items, pageType }) => {
   const isSinglePage = pageType === 'single'
   const cardItems = items.filter(item => item?.order !== 'z')
   const geoCard = items.find(item => item?.order === 'z')
-  const geoData = parseGeoData(geoCard?.path)
+  const geoData = {
+    ...parseGeoData(geoCard?.path),
+    title: geoCard?.title,
+    description: geoCard?.description,
+  }
 
   return (
     <div className='row mt-3'>
@@ -21,7 +25,7 @@ const List = ({ items, pageType }) => {
           </div>
         )
       })}
-      {isSinglePage && <CardGeo geoData={geoData} />}
+      {isSinglePage && <CardGeo {...geoData} />}
     </div>
   )
 }
