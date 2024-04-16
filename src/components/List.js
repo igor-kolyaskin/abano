@@ -4,10 +4,9 @@ import parseGeoData from '../handlers/parseGeoData'
 
 const List = ({ items, pageType }) => {
   const isSinglePage = pageType === 'single'
-  const cardItems = items.filter(item => item.order !== 'z')
-  const geoDataArray = items.filter(item => item.order === 'z')[0]?.path
-  const geoData = parseGeoData(geoDataArray)
-  console.log('geoData: ', geoData)
+  const cardItems = items.filter(item => item?.order !== 'z')
+  const geoCard = items.find(item => item?.order === 'z')
+  const geoData = parseGeoData(geoCard?.path)
 
   return (
     <div className='row mt-3'>
@@ -22,7 +21,7 @@ const List = ({ items, pageType }) => {
           </div>
         )
       })}
-      {isSinglePage && <CardGeo />}
+      {isSinglePage && <CardGeo geoData={geoData} />}
     </div>
   )
 }

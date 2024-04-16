@@ -1,5 +1,4 @@
-function CardGeo() {
-  const textStyle = 'text-start ps-1 fs-6'
+function CardGeo({lt, ln, zoom, geoId, geoTitle}) {
   const cardText = 'geo'
 
   return (
@@ -19,7 +18,7 @@ function CardGeo() {
             title='My location'
           ></gmp-advanced-marker>
         </gmp-map>
-        <h5 className={`${textStyle} mt-1`}>{cardText}</h5>
+        <h5 className='text-start ps-1 fs-6 mt-1'>{cardText}</h5>
       </div>
     </div>
   )
