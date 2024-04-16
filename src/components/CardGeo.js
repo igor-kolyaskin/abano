@@ -8,12 +8,17 @@ function CardGeo() {
       style={{ width: '20rem', paddingLeft: 0, paddingRight: 0 }}
     >
       <div className='card' style={{ width: '18.1rem' }}>
-        <div
-          style={{
-            height: '18rem',
-            backgroundColor: 'maroon',
-          }}
-        ></div>
+        <gmp-map
+          center='41.68861389160156,44.81126022338867'
+          zoom='14'
+          map-id='DEMO_MAP_ID'
+          style={{ height: '18rem' }}
+        >
+          <gmp-advanced-marker
+            position='41.68861389160156,44.81126022338867'
+            title='My location'
+          ></gmp-advanced-marker>
+        </gmp-map>
         <h5 className={`${textStyle} mt-1`}>{cardText}</h5>
       </div>
     </div>
