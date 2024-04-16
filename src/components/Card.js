@@ -1,9 +1,8 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-function Card({ path, title, description, createdAt, user, id }) {
+function Card({ path, title, description, pageType, id }) {
   const navigate = useNavigate()
-  const { pathname } = useLocation()
-  const isHomePage = pathname === '/'
+  const isHomePage = pageType === 'general'
   const cursorStyle = isHomePage ? 'pointer' : 'default'
   const textStyle = isHomePage ? 'text-center' : 'text-start ps-1 fs-6'
   const cardText = isHomePage ? title : description

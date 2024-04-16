@@ -20,7 +20,7 @@ function App() {
       <div className='row'>
         <h1 className='text-start'>Worth to Visit</h1>
       </div>{' '}
-      <List items={itemsOnHomePage} />
+      <List items={itemsOnHomePage} pageType='general' />
     </>
   )
 }

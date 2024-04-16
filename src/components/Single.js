@@ -43,10 +43,10 @@ const Single = () => {
           className='text-start h2 pt-2'
           style={{ height: '48px', width: '460px' }}
         >
-          {parentItem.title}
+          {parentItem?.title}
         </div>
       </div>
-      <List items={list} />
+      <List items={list} pageType='single' />
     </>
   )
 }
