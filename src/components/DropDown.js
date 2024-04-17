@@ -25,9 +25,6 @@ const LogOut = () => {
 }
 function Dropdown() {
   const { currentUser } = useAuthContext()
-  const username = useMemo(() => {
-    return currentUser?.displayName || 'Profile'
-  }, [currentUser])
   const avatar = useMemo(() => {
     return !!currentUser ? (
       <img
@@ -57,16 +54,10 @@ function Dropdown() {
         >
           {avatar}
         </a>
-        <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
-          <li className='dropdown-item text-center'>
-            {currentUser && <Link to={'/profile'}>{username}</Link>}
-            <hr className='dropdown divider' />
-          </li>
-          <div className='d-flex justify-content-center'>
-            <LogIn />
-            <LogOut />
-          </div>
-        </ul>
+        <div className='d-flex justify-content-center'>
+          <LogIn />
+          <LogOut />
+        </div>
       </li>
     </ul>
   )

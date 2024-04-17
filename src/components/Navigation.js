@@ -21,9 +21,10 @@ function Navigation() {
           <Link
             className={`nav-link ${pathname === '/profile' ? 'active' : ''}`}
             aria-current='page'
-            to='/profile'
+            // to='/profile'
+            to='/'
           >
-            Profile
+            New Page
           </Link>
         </li>
       )}

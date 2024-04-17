@@ -8,7 +8,6 @@ import Provider from './context/FirestoreContext'
 import AuthProvider from './context/AuthContext'
 import Layout from './components/Layout'
 import NotFound from './components/NotFound'
-import Profile from './components/Profile'
 import Single from './components/Single'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
@@ -18,7 +17,6 @@ function AppRoutes() {
       <Route path='/' element={<App />} />
       <Route path='/images/:id' element={<Single />} />
       <Route path='*' element={<NotFound />} />
-      <Route path='/profile' element={<Profile />} />
     </Routes>
   )
 }
