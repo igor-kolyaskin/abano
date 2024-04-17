@@ -4,7 +4,9 @@ import parseGeoData from '../handlers/parseGeoData'
 
 const List = ({ items, pageType }) => {
   const isSinglePage = pageType === 'single'
-  const cardItems = items.filter(item => item?.order !== 'z')
+  const cardItems = items
+    .filter(item => item?.order !== 'z')
+    .sort((item1, item2) => item1.order - item2.order)
   const geoCard = items.find(item => item?.order === 'z')
   const geoData = {
     ...parseGeoData(geoCard?.path),
