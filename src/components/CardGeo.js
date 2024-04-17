@@ -1,16 +1,7 @@
+import CardText from './CardText'
+
 function CardGeo({ lt, ln, zoom, geoId, geoTitle, title, description }) {
   const coordinates = lt && ln ? `${lt},${ln}` : '0,0'
-
-  const TestDiv = () => {
-    return (
-      <>
-        <div>AAA</div>
-        <a href='https://www.youtube.com/watch?v=lfyYKPD0h0Q'>Video</a>
-        <div>BBB</div>
-      </>
-    )
-  }
-
   return (
     <div
       className='mb-3'
@@ -28,9 +19,7 @@ function CardGeo({ lt, ln, zoom, geoId, geoTitle, title, description }) {
             title={geoTitle}
           ></gmp-advanced-marker>
         </gmp-map>
-        <div className='text-start ps-1 fs-6 mt-1'>
-          <TestDiv />
-        </div>
+        <CardText data={description} />
       </div>
     </div>
   )
