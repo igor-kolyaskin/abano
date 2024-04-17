@@ -1,13 +1,18 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useFireStoreContext } from '../context/FirestoreContext'
+import { useContext, useEffect } from 'react'
+import { Context } from '../context/FirestoreContext'
 import filterOnParentId from '../handlers/filterOnParentId'
 import List from './List'
 
 const Single = () => {
+  const { state, read } = useContext(Context)
+
+  useEffect(() => {
+    read()
+  }, [])
+
   const navigate = useNavigate()
   const { state: routerState } = useLocation()
-
-  const { state } = useFireStoreContext()
 
   const parentItem = state.items.find(item => item.id === routerState.id)
   const successorItems = filterOnParentId(state.items, routerState.id)
