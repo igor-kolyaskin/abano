@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom'
+import CardText from './CardText'
 
 function Card({ path, title, description, pageType, id }) {
   const navigate = useNavigate()
   const isHomePage = pageType === 'general'
   const cursorStyle = isHomePage ? 'pointer' : 'default'
-  const textStyle = isHomePage ? 'text-center' : 'text-start ps-1 fs-6'
-  const cardText = isHomePage ? title : description
+  const textStyle = isHomePage ? 'text-center fs-5 fw-semibold pb-1' : 'text-start ps-1 fs-6'
+  const textContent = isHomePage ? title : description
 
   const handleOnClick = () => {
     if (!isHomePage) return
@@ -27,7 +28,7 @@ function Card({ path, title, description, pageType, id }) {
             backgroundRepeat: 'no-repeat',
           }}
         ></div>
-        <h5 className={`${textStyle} mt-1`}>{cardText}</h5>
+        <CardText data={textContent} textStyle={textStyle} />
       </div>
     </div>
   )
