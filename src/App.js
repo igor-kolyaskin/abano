@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <div className='row'>
-        <h1 className='text-start'>Worth to Visit</h1>
+        <h1 className='text-start'>Стоит заглянуть</h1>
       </div>{' '}
       <List items={itemsOnHomePage} pageType='general' />
     </>

@@ -12,7 +12,7 @@ function Navigation() {
           aria-current='page'
           to='/'
         >
-          Home
+          Стоит заглянуть
         </Link>
       </li>
 
