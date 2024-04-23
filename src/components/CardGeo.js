@@ -8,7 +8,7 @@ function CardGeo({ lt, ln, zoom, geoId, geoTitle, title, description }) {
       style={{ width: '20rem', paddingLeft: 0, paddingRight: 0 }}
     >
       <div className='card' style={{ width: '18.1rem' }}>
-        <gmp-map
+        {/* <gmp-map
           center={coordinates}
           zoom={zoom}
           map-id={geoId}
@@ -18,7 +18,7 @@ function CardGeo({ lt, ln, zoom, geoId, geoTitle, title, description }) {
             position={coordinates}
             title={geoTitle}
           ></gmp-advanced-marker>
-        </gmp-map>
+        </gmp-map> */}
         <CardText data={description} />
       </div>
     </div>
