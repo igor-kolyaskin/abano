@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
 import { Context } from '../context/FirestoreContext'
 import filterOnParentId from '../handlers/filterOnParentId'
 import List from './List'
@@ -14,9 +14,11 @@ const Single = () => {
   const navigate = useNavigate()
   const { state: routerState } = useLocation()
 
-  const parentItem = state.items.find(item => item.id === routerState.id)
-  const successorItems = filterOnParentId(state.items, routerState.id)
-  const list = [parentItem, ...successorItems]
+  const list = useMemo(() => {
+    const parentItem = state.items.find(item => item.id === routerState.id)
+    const successorItems = filterOnParentId(state.items, routerState.id)
+    return [parentItem, ...successorItems]
+  }, [state.items, routerState.id])
 
   return (
     <>
@@ -46,7 +48,7 @@ const Single = () => {
           className='text-start h2 pt-2'
           style={{ height: '48px', width: '460px' }}
         >
-          {parentItem?.title}
+          {list[0]?.title}
         </div>
       </div>
       <List items={list} pageType='single' />
